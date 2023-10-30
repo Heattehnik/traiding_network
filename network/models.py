@@ -26,6 +26,11 @@ class NetworkNode(models.Model):
     def __str__(self):
         return f"{self.name}, {self.email}, {self.country}"
 
+    class Meta:
+        ordering = ["id"]
+        verbose_name = "Звено сети"
+        verbose_name_plural = "Звенья сети"
+
 @receiver(pre_save, sender=NetworkNode)
 def set_network_node_level(sender, instance, **kwargs):
     if instance.supplier:
